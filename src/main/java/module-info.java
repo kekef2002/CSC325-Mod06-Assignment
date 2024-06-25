@@ -1,4 +1,4 @@
-module com.example.csc325_firebase_webview_auth {
+module com.example.csc325_firebase_webview_auth{
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
@@ -13,6 +13,7 @@ module com.example.csc325_firebase_webview_auth {
 
     requires google.cloud.core;
     requires com.google.auth;
+    requires java.base;
 
 
     opens com.example.csc325_firebase_webview_auth.viewmodel to jdk.jsobject;

@@ -25,9 +25,19 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         fstore = contxtFirebase.firebase();
         fauth = FirebaseAuth.getInstance();
-        scene = new Scene(loadFXML("/files/AccessFBView.fxml"));
+        scene = new Scene(loadFXML("/files/SplashScreen.fxml"));
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        // Simulate a loading time then switch to the main menu
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000); // Wait for 3 seconds
+                setRoot("/files/Menu.fxml");
+            } catch (InterruptedException | IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     public static void setRoot(String fxml) throws IOException {
@@ -35,12 +45,11 @@ public class App extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml ));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
-
 }
