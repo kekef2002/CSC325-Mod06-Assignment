@@ -1,1 +1,1 @@
-# CSC325-Mod06-Assignment-
+# CSC325-Mod06-Assignment
